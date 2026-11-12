@@ -1,29 +1,34 @@
 # 🚀 QueueWise – Local Business Queue Manager
 
-A real-time queue and appointment management system designed to help local businesses manage customer queues efficiently, reduce waiting times, and improve customer experiences.
+**A Smart Real-Time Queue & Appointment Management System for Local Businesses**
+
+QueueWise is a web-based queue and appointment management application designed to help local businesses manage customer queues, organize appointments, reduce waiting times, and improve the overall customer experience.
+
+The platform provides a digital solution for traditional manual queue management through real-time communication and efficient data management.
+
+## 🌐 Live Demo
+
+**Live Website:**  
+https://queuewise-frontend-ogeg.onrender.com
+
+**Backend API:**  
+https://queue-tracker-1.onrender.com
+
+**GitHub Repository:**  
+https://github.com/sumitkashyap3450/queue-tracker
 
 ---
 
-## 📌 About The Project
+## ✨ Key Features
 
-QueueWise is a web-based queue management application that helps local businesses digitize their appointment and queue management processes.
-
-Instead of managing customers manually, businesses can use QueueWise to organize appointments, monitor queues, and manage customer flow through a centralized platform.
-
-The project aims to make queue management simpler, faster, and more efficient using modern web technologies.
-
----
-
-## ✨ Features
-
-- **Queue Management:** Organize and manage customer queues digitally.
-- **Appointment Management:** Manage customer appointments efficiently.
-- **Real-Time Communication:** Socket.IO integration for real-time updates.
-- **User Authentication:** Secure authentication using JSON Web Tokens (JWT).
-- **Password Encryption:** Password hashing using bcryptjs.
-- **RESTful APIs:** Backend APIs built with Express.js.
-- **Database Integration:** MongoDB Atlas for storing application data.
-- **Security:** Helmet and Express Rate Limit for additional API protection.
+- **Queue Management:** Digitally manage and organize customer queues.
+- **Appointment Management:** Handle customer appointments efficiently.
+- **Real-Time Updates:** Socket.IO integration for real-time communication.
+- **User Authentication:** JWT-based authentication.
+- **Password Security:** Secure password hashing using bcryptjs.
+- **RESTful APIs:** Backend APIs developed using Express.js.
+- **Database Management:** MongoDB Atlas integration.
+- **API Security:** Helmet and Express Rate Limit for additional protection.
 
 ---
 
@@ -31,7 +36,9 @@ The project aims to make queue management simpler, faster, and more efficient us
 
 | Technology | Purpose |
 |---|---|
-| React.js | Frontend |
+| HTML5 | Frontend Structure |
+| CSS3 | Styling and Layout |
+| JavaScript | Frontend Functionality |
 | Node.js | Backend Runtime |
 | Express.js | Backend Framework |
 | MongoDB Atlas | Database |
@@ -39,7 +46,9 @@ The project aims to make queue management simpler, faster, and more efficient us
 | Socket.IO | Real-Time Communication |
 | JWT | Authentication |
 | bcryptjs | Password Hashing |
-| CSS | Styling |
+| Helmet | Security Headers |
+| Express Rate Limit | API Rate Limiting |
+| Render | Deployment |
 
 ---
 
@@ -49,11 +58,16 @@ The project aims to make queue management simpler, faster, and more efficient us
 queue-tracker/
 │
 ├── client/
-│   ├── public/
-│   ├── src/
-│   └── package.json
+│   ├── css/
+│   ├── js/
+│   └── index.html
 │
 ├── server/
+│   ├── config/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
 │   └── app.js
 │
 ├── .env
@@ -67,7 +81,7 @@ queue-tracker/
 
 ## ⚙️ Installation & Setup
 
-Follow these instructions to run QueueWise locally.
+Follow these steps to run the project locally.
 
 ### 1. Clone the Repository
 
@@ -81,7 +95,7 @@ git clone https://github.com/sumitkashyap3450/queue-tracker.git
 cd queue-tracker
 ```
 
-### 3. Install Backend Dependencies
+### 3. Install Dependencies
 
 ```bash
 npm install
@@ -91,78 +105,118 @@ npm install
 
 Create a `.env` file in the root directory.
 
+Add the required configuration:
+
 ```env
 PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+MONGODB_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_jwt_secret
 ```
 
-Replace the placeholder values with your actual configuration.
+Use the exact environment variable names expected by your application.
 
-**Important:** Never upload your `.env` file or database credentials to GitHub.
+**Important:** Never upload your `.env` file or sensitive credentials to GitHub.
 
-### 5. Start the Backend
+### 5. Start the Backend Server
 
 ```bash
 npm start
 ```
 
-### 6. Start the Frontend
+The backend server will start on the configured port.
 
-Open a new terminal:
+### 6. Run the Frontend
 
-```bash
-cd client
-npm install
-npm run dev
-```
+Open the following URL in your browser:
 
-The frontend will run on the local development URL provided by Vite.
+http://localhost:5000
+
+If your frontend is served separately, open `client/index.html` using a local development server and configure the backend API URL accordingly.
 
 ---
 
-## 🌐 Live Deployment
+## 🗄️ Database
 
-| Component | Platform |
-|---|---|
-| Backend | Render |
-| Database | MongoDB Atlas |
-| Frontend | Deployment pending |
+QueueWise uses **MongoDB Atlas** as its cloud database.
 
-**Live Backend URL:**
+Mongoose is used for database interaction and data modeling.
 
-https://queue-tracker-1.onrender.com
+Database responsibilities include:
+
+- Managing application data.
+- Storing user information.
+- Managing queue and appointment records.
+- Supporting backend operations.
 
 ---
 
-## 🔐 Security
+## 🔐 Security Features
 
 - JWT-based authentication.
-- Password hashing with bcryptjs.
+- Password hashing using bcryptjs.
 - Environment variables for sensitive configuration.
 - HTTP security headers using Helmet.
 - API request rate limiting.
 
 ---
 
+## 🚀 Deployment
+
+The application is deployed using Render, with MongoDB Atlas providing cloud database services.
+
+| Component | Platform | Status |
+|---|---|---|
+| Frontend | Render | Deployed |
+| Backend | Render | Deployed |
+| Database | MongoDB Atlas | Connected |
+| Source Code | GitHub | Available |
+
+### Live Application
+
+🌐 **Frontend:**  
+https://queuewise-frontend-ogeg.onrender.com
+
+⚙️ **Backend:**  
+https://queue-tracker-1.onrender.com
+
+---
+
 ## 🎯 Project Objective
 
-The primary objective of QueueWise is to provide local businesses with a simple digital solution for queue and appointment management.
+The main objective of QueueWise is to simplify queue and appointment management for local businesses.
 
-By combining real-time communication, database management, and secure authentication, the application aims to improve operational efficiency and customer experience.
+By replacing traditional manual queue systems with a digital solution, QueueWise aims to:
+
+- Reduce customer waiting time.
+- Improve business operational efficiency.
+- Simplify appointment scheduling.
+- Provide better queue visibility.
+- Improve the overall customer experience.
+
+---
+
+## 🔮 Future Enhancements
+
+- Admin dashboard with analytics.
+- Customer notifications.
+- Advanced appointment scheduling.
+- Queue status tracking.
+- Business performance reports.
+- Improved mobile responsiveness.
 
 ---
 
 ## 👩‍💻 Developer
 
-**sumit kashyap**
+**Sumit**
 
-- GitHub: [sumitkashyap3450](https://github.com/sumitkashyap3450)
+GitHub:  
+https://github.com/sumitkashyap3450
 
 ---
 
 ## ⭐ Support
 
-If you find this project interesting, consider giving the repository a star!
+If you find this project useful or interesting, consider giving the repository a ⭐.
 
-**Built with ❤️ using the MERN stack.**
+**Built with ❤️ using JavaScript, Node.js, Express.js and MongoDB.**
