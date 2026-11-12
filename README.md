@@ -1,90 +1,168 @@
-# QueueWise — Local Business Queue & Appointment Tracker
+# 🚀 QueueWise – Local Business Queue Manager
 
-A full-stack queue management app for salons, clinics, repair shops and other local businesses. Customers can join a live queue without creating an account; business owners can manage the queue from a protected dashboard.
+A real-time queue and appointment management system designed to help local businesses manage customer queues efficiently, reduce waiting times, and improve customer experiences.
 
-## Features
+---
 
-### Customer experience
-- Browse and search open businesses by name, category or address.
-- View the active queue and join with a name (phone is optional).
-- Receive a token number, queue position and estimated wait time.
-- See queue changes live through Socket.IO.
+## 📌 About The Project
 
-### Business dashboard
-- Owner registration and login (bcrypt password hashing + JWT sessions).
-- Create a business profile with category, address and average service duration.
-- View active queue and today's visitor/completion metrics.
-- Move customers to serving, done or skipped.
-- Add walk-in customers.
-- Shop ownership is checked before protected operations.
+QueueWise is a web-based queue management application that helps local businesses digitize their appointment and queue management processes.
 
-### Engineering
-- Express REST API, Mongoose models and MongoDB Atlas support.
-- Atomic MongoDB pipeline update for daily token allocation.
-- Socket.IO rooms isolate live updates by business.
-- Helmet, API rate limiting, input checks and centralized error responses.
-- Customer phone numbers are not included in public queue responses.
+Instead of managing customers manually, businesses can use QueueWise to organize appointments, monitor queues, and manage customer flow through a centralized platform.
 
-## Run locally
+The project aims to make queue management simpler, faster, and more efficient using modern web technologies.
 
-Requirements: Node.js 18+ and a MongoDB database (MongoDB Atlas free tier works).
+---
+
+## ✨ Features
+
+- **Queue Management:** Organize and manage customer queues digitally.
+- **Appointment Management:** Manage customer appointments efficiently.
+- **Real-Time Communication:** Socket.IO integration for real-time updates.
+- **User Authentication:** Secure authentication using JSON Web Tokens (JWT).
+- **Password Encryption:** Password hashing using bcryptjs.
+- **RESTful APIs:** Backend APIs built with Express.js.
+- **Database Integration:** MongoDB Atlas for storing application data.
+- **Security:** Helmet and Express Rate Limit for additional API protection.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| React.js | Frontend |
+| Node.js | Backend Runtime |
+| Express.js | Backend Framework |
+| MongoDB Atlas | Database |
+| Mongoose | Database Modeling |
+| Socket.IO | Real-Time Communication |
+| JWT | Authentication |
+| bcryptjs | Password Hashing |
+| CSS | Styling |
+
+---
+
+## 📂 Project Structure
+
+```text
+queue-tracker/
+│
+├── client/
+│   ├── public/
+│   ├── src/
+│   └── package.json
+│
+├── server/
+│   └── app.js
+│
+├── .env
+├── .gitignore
+├── package.json
+├── package-lock.json
+└── README.md
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+Follow these instructions to run QueueWise locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/sumitkashyap3450/queue-tracker.git
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd queue-tracker
+```
+
+### 3. Install Backend Dependencies
 
 ```bash
 npm install
-cp .env.example .env
 ```
 
-Set `MONGODB_URI` and a long random `JWT_SECRET` in `.env`, then:
+### 4. Configure Environment Variables
+
+Create a `.env` file in the root directory.
+
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+```
+
+Replace the placeholder values with your actual configuration.
+
+**Important:** Never upload your `.env` file or database credentials to GitHub.
+
+### 5. Start the Backend
 
 ```bash
+npm start
+```
+
+### 6. Start the Frontend
+
+Open a new terminal:
+
+```bash
+cd client
+npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+The frontend will run on the local development URL provided by Vite.
 
-## Deploy on Render
+---
 
-1. Push this folder to a GitHub repository.
-2. Create a new **Web Service** on Render and connect the repository.
-3. Build command: `npm install`
-4. Start command: `npm start`
-5. Add environment variables: `MONGODB_URI`, `JWT_SECRET`, and optionally `CLIENT_ORIGIN`.
-6. Create a MongoDB Atlas database and allow the Render service to connect. For production, restrict Atlas network access appropriately rather than leaving it open.
+## 🌐 Live Deployment
 
-The app serves the frontend and API from the same Node service, so no separate static-site deployment is required.
+| Component | Platform |
+|---|---|
+| Backend | Render |
+| Database | MongoDB Atlas |
+| Frontend | Deployment pending |
 
-## Main API routes
+**Live Backend URL:**
 
-| Method | Route | Purpose | Auth |
-|---|---|---|---|
-| POST | `/api/auth/register` | Create owner account | No |
-| POST | `/api/auth/login` | Owner login | No |
-| GET | `/api/shops` | List open businesses | No |
-| GET | `/api/shops/:slug` | Public shop + live queue snapshot | No |
-| GET | `/api/shops/mine` | List owner's businesses | Yes |
-| POST | `/api/shops` | Create business | Yes |
-| PATCH | `/api/shops/:id` | Update business | Yes |
-| POST | `/api/queue/:shopId/join` | Customer joins queue | No |
-| GET | `/api/queue/:shopId` | Owner's active queue | Yes |
-| POST | `/api/queue/:shopId/walk-in` | Add walk-in customer | Yes |
-| PATCH | `/api/queue/entry/:entryId/status` | Update queue status | Yes |
-| GET | `/api/queue/:shopId/analytics` | Today's basic metrics | Yes |
-| GET | `/api/health` | Health check | No |
+https://queue-tracker-1.onrender.com
 
-## Socket.IO
+---
 
-- Client emits `join:shop` with the MongoDB shop ID.
-- Server emits `queue:updated` to that shop's room after queue mutations.
+## 🔐 Security
 
-## Suggested next upgrades
+- JWT-based authentication.
+- Password hashing with bcryptjs.
+- Environment variables for sensitive configuration.
+- HTTP security headers using Helmet.
+- API request rate limiting.
 
-- Real appointment time slots and booking conflict prevention.
-- Customer cancellation using a secure, unguessable ticket token.
-- WhatsApp/SMS notifications and reminders.
-- Historical analytics with Chart.js and actual average service duration.
-- Automated tests (Jest/Supertest), structured logging and audit history.
-- CSRF/session strategy if switching from bearer tokens to cookies; stronger production validation and monitoring.
+---
 
-## Important MVP notes
+## 🎯 Project Objective
 
-This is a functional MVP starter, not a certified production scheduling platform. The current wait-time estimate uses the configured average service duration. It does not guarantee a service start time. Owners should test with a small pilot business before relying on it for customer operations.
+The primary objective of QueueWise is to provide local businesses with a simple digital solution for queue and appointment management.
+
+By combining real-time communication, database management, and secure authentication, the application aims to improve operational efficiency and customer experience.
+
+---
+
+## 👩‍💻 Developer
+
+**sumit kashyap**
+
+- GitHub: [sumitkashyap3450](https://github.com/sumitkashyap3450)
+
+---
+
+## ⭐ Support
+
+If you find this project interesting, consider giving the repository a star!
+
+**Built with ❤️ using the MERN stack.**
